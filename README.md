@@ -27,7 +27,7 @@ Tujuan utama dari proyek ini adalah:
 
 Proyek ini menggunakan **Microsoft News Dataset (MIND)**, sebuah dataset skala besar untuk riset rekomendasi berita. Dataset ini berisi data klik anonim dari jutaan pengguna, serta informasi detail mengenai artikel berita yang dibaca.
 
-- **Sumber Dataset:**MIND: Microsoft News Recommendation [https://www.kaggle.com/datasets/arashnic/mind-news-dataset]
+- **Sumber Dataset:** MIND: Microsoft News Recommendation [https://www.kaggle.com/datasets/arashnic/mind-news-dataset]
 
 ---
 
