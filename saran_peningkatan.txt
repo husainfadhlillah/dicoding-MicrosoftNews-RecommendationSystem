@@ -1,0 +1,28 @@
+Saran Peningkatan Proyek
+
+- Hyperparameter Tuning dan Cross-Validation
+Lakukan pencarian grid/random search untuk menemukan kombinasi hyperparameter terbaik (misalnya jumlah faktor di matrix factorization, learning rate, regularisasi). Sertakan juga teknik k-fold cross-validation untuk memastikan model tidak overfitting.
+
+- Pendekatan Hybrid
+Gabungkan Content-based dan Collaborative Filtering dengan weighted ensemble atau stacking agar bisa memanfaatkan kekuatan kedua metode sekaligus, serta mengurangi kelemahan cold-start.
+
+- Penanganan Cold-Start
+Item Cold-Start: Manfaatkan metadata (kategori, deskripsi, tag) untuk merekomendasikan produk baru.
+User Cold-Start: Kumpulkan data eksplisit via survey minat awal (contoh: onboarding questionnaire).
+
+- Context-Aware Recommendations
+Tambahkan fitur konteks seperti waktu (seasonal trends), lokasi, atau device untuk rekomendasi yang lebih relevan sesuai situasi user.
+
+- Melakukan testing model sistem rekomendasi
+Untuk testing, kamu bisa mencoba membuat kode untuk testing model machine learning yang telah kamu buat. Apakah model tersebut bisa merekomendasikan sesuatu dari hasil input yang diberikan.
+Menerapkan model tersebut pada suatu website ataupun proyek lainnya untuk bisa memberikan rekomendasi dari data yang dimiliki.
+
+- Peningkatan Visualisasi
+Menambahkan detail lebih seperti legenda pada visualisasi agar pembaca lebih mudah memahami tujuan visualisasi tersebut itu untuk apa.
+Pemilihan warna yang konsisten akan lebih membantu para pembaca saat melihat hasil visualisasi yang kamu buat.
+
+- Evaluasi Kinerja dan Error Analysis
+Lakukan analisis error secara mendalam pada hasil prediksi model. Identifikasi pola kesalahan yang sering terjadi dan cari solusi yang tepat, baik dengan memperbaiki preprocessing, menambah data, atau menyempurnakan arsitektur model.
+
+- Additional (Sebaiknya di Perbaiki)
+Pada laporan yang kamu tulis, sebenarnya kamu tidak perlu menuliskan kode pada laporan karena kamu sudah menuliskannya pada notebook. Menuliskan banyak kode pada laporan dapat mengurangi kemudahan pembaca dalam membaca laporan.
