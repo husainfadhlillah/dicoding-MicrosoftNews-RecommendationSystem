@@ -180,22 +180,23 @@ Tahapan ini krusial untuk mentransformasi data mentah menjadi format yang siap u
   ```
 
 - **Hasil Rekomendasi**:
+
   Untuk input berita _"50 Foods You Should Never Eat, According to Health Experts"_, model memberikan rekomendasi berikut:
 
-| Title                                             | Category     |
-| :------------------------------------------------ | :----------- |
-| How Much Protein You Should Actually Eat in On... | health       |
-| 50 famous foods you should eat in your lifetime   | foodanddrink |
-| 50 Awful Foods That Should Never Be in Your Ki... | health       |
-| 3 Foods You Should Eat at Breakfast If You Wan... | health       |
-| The 5 worst dishes you can eat at buffet, acco... | health       |
-| 10 Exercises You Should Never Do Again, Accord... | health       |
-| 100 Worst Foods to Eat When You're Sick           | health       |
-| 21 Frozen Foods You Should Never Put in Your Cart | health       |
-| 40 Health Symptoms You Should Never Ignore        | health       |
-| Heart Health Symptoms You Should Never Ignore     | health       |
+  | Title                                             | Category     |
+  | :------------------------------------------------ | :----------- |
+  | How Much Protein You Should Actually Eat in On... | health       |
+  | 50 famous foods you should eat in your lifetime   | foodanddrink |
+  | 50 Awful Foods That Should Never Be in Your Ki... | health       |
+  | 3 Foods You Should Eat at Breakfast If You Wan... | health       |
+  | The 5 worst dishes you can eat at buffet, acco... | health       |
+  | 10 Exercises You Should Never Do Again, Accord... | health       |
+  | 100 Worst Foods to Eat When You're Sick           | health       |
+  | 21 Frozen Foods You Should Never Put in Your Cart | health       |
+  | 40 Health Symptoms You Should Never Ignore        | health       |
+  | Heart Health Symptoms You Should Never Ignore     | health       |
 
-_Tabel 1: Contoh Top-10 Rekomendasi dari Model Content-Based_
+  _Tabel 1: Contoh Top-10 Rekomendasi dari Model Content-Based_
 
 - **Kelebihan dan Kekurangan**:
   - **Kelebihan**: Tidak memerlukan data dari pengguna lain, sehingga tidak mengalami masalah _user cold start_. Rekomendasinya juga transparan dan mudah dijelaskan (misalnya, "kami merekomendasikan ini karena topiknya sama").
@@ -226,22 +227,23 @@ _Tabel 1: Contoh Top-10 Rekomendasi dari Model Content-Based_
   ```
 
 - **Hasil Rekomendasi**:
+
   Untuk input pengguna `U46778`, model memberikan rekomendasi berikut:
 
-| Title                                             | Category      |
-| :------------------------------------------------ | :------------ |
-| The Brands Queen Elizabeth, Prince Charles, an... | lifestyle     |
-| 50 Worst Habits For Belly Fat                     | health        |
-| The Cost of Trump's Aid Freeze in the Trenches... | news          |
-| I Was An NBA Wife. Here's How It Affected My M... | health        |
-| How to Get Rid of Skin Tags, According to a De... | health        |
-| Should NFL be able to fine players for critici... | sports        |
-| It's been Orlando's hottest October ever so fa... | weather       |
-| Chile: Three die in supermarket fire amid prot... | news          |
-| Best PS5 games: top PlayStation 5 titles to lo... | entertainment |
-| How to report weather-related closings, delays    | news          |
+  | Title                                             | Category      |
+  | :------------------------------------------------ | :------------ |
+  | The Brands Queen Elizabeth, Prince Charles, an... | lifestyle     |
+  | 50 Worst Habits For Belly Fat                     | health        |
+  | The Cost of Trump's Aid Freeze in the Trenches... | news          |
+  | I Was An NBA Wife. Here's How It Affected My M... | health        |
+  | How to Get Rid of Skin Tags, According to a De... | health        |
+  | Should NFL be able to fine players for critici... | sports        |
+  | It's been Orlando's hottest October ever so fa... | weather       |
+  | Chile: Three die in supermarket fire amid prot... | news          |
+  | Best PS5 games: top PlayStation 5 titles to lo... | entertainment |
+  | How to report weather-related closings, delays    | news          |
 
-_\*\< align="center"\>\_Tabel 2: Contoh Top-10 Rekomendasi dari Model Collaborative Filtering_
+  _Tabel 2: Contoh Top-10 Rekomendasi dari Model Collaborative Filtering_
 
 - **Kelebihan dan Kekurangan**:
   - **Kelebihan**: Mampu menghasilkan rekomendasi yang beragam dan mengejutkan (_serendipitous_) karena tidak bergantung pada konten.
