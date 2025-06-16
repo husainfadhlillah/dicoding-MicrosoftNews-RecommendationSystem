@@ -1,22 +1,22 @@
-# Laporan Proyek Machine Learning - Rekomendasi Berita
+# Laporan Proyek Machine Learning - Sistem Rekomendasi Berita
 
-Nama: [Nama Lengkap Anda]
-Email: [Email Anda]
-ID Dicoding: [ID Dicoding Anda]
+- **Nama:** Muhammad Husain Fadhlillah
+- **Email Student:** mc006d5y2343@student.devacademy.id
+- **Cohort ID:** MC006D5Y2343
 
 ## Project Overview
 
-Di era digital saat ini, informasi mengalir dengan deras dan tanpa henti. Setiap hari, ribuan artikel berita baru diterbitkan secara online dari berbagai sumber di seluruh dunia. Fenomena yang dikenal sebagai **information overload** ini menyulitkan pengguna untuk menemukan berita yang relevan dan sesuai dengan minat mereka di antara lautan konten yang tersedia. Pengguna sering kali merasa lelah dan kewalahan saat harus menyaring berita secara manual, yang dapat menyebabkan turunnya keterlibatan (engagement) pada platform berita.
+Di era digital saat ini, informasi mengalir dengan deras dan tanpa henti. Setiap hari, ribuan artikel berita baru diterbitkan secara online dari berbagai sumber di seluruh dunia. Fenomena yang dikenal sebagai **information overload** ini menyulitkan pengguna untuk menemukan berita yang relevan dan sesuai dengan minat mereka di antara lautan konten yang tersedia [1]. Pengguna sering kali merasa lelah dan kewalahan saat harus menyaring berita secara manual, yang dapat menyebabkan turunnya keterlibatan (_engagement_) pada platform berita.
 
-Sistem rekomendasi berita hadir sebagai solusi teknologi untuk mengatasi masalah ini. Dengan menganalisis konten berita dan perilaku pengguna di masa lalu, sistem ini dapat menyajikan daftar artikel yang dipersonalisasi untuk setiap individu. Hal ini tidak hanya meningkatkan pengalaman pengguna dengan menyajikan konten yang relevan, tetapi juga membantu platform berita untuk meningkatkan metrik penting seperti waktu baca, jumlah klik, dan retensi pengguna.
+Sistem rekomendasi hadir sebagai solusi teknologi untuk mengatasi masalah ini. Dengan menganalisis konten berita dan perilaku pengguna di masa lalu, sistem ini dapat menyajikan daftar artikel yang dipersonalisasi untuk setiap individu. Hal ini tidak hanya meningkatkan pengalaman pengguna dengan menyajikan konten yang relevan, tetapi juga membantu platform berita untuk meningkatkan metrik penting seperti waktu baca, jumlah klik, dan retensi pengguna [2].
 
-Proyek ini bertujuan untuk membangun model sistem rekomendasi berita yang efektif dengan mengeksplorasi dua pendekatan utama: _Content-Based Filtering_ dan _Collaborative Filtering_. Dengan mengimplementasikan kedua pendekatan ini, kita dapat memahami kelebihan dan kekurangan masing-masing serta bagaimana keduanya dapat digunakan untuk memberikan rekomendasi yang akurat dan relevan kepada pengguna.
+Proyek ini bertujuan untuk membangun model sistem rekomendasi berita yang efektif dengan mengeksplorasi dan membandingkan dua pendekatan utama: _Content-Based Filtering_ dan _Collaborative Filtering_. Dengan mengimplementasikan dan mengevaluasi kedua pendekatan ini, kita dapat memahami kelebihan dan kekurangan masing-masing serta menentukan pendekatan mana yang lebih unggul untuk memberikan rekomendasi yang akurat dan relevan kepada pengguna.
 
 ### Referensi
 
-Proyek ini menggunakan dataset Microsoft News Dataset (MIND), yang didokumentasikan dalam penelitian berikut:
+[1] Wu, F., Qiao, Y., Chen, J., Wu, C., Qi, T., Lian, J., ... & Xie, X. (2020). MIND: A Large-scale Dataset for News Recommendation. _Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics_.
 
-> Wu, F., Qiao, Y., Chen, J., Wu, C., Qi, T., Lian, J., ... & Xie, X. (2020). MIND: A Large-scale Dataset for News Recommendation. _Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics_. https://aclanthology.org/2020.acl-main.331
+[2] Koren, Y., Bell, R., & Volinsky, C. (2009). Matrix factorization techniques for recommender systems. _Computer_, 42(8), 30-37.
 
 ## Business Understanding
 
@@ -24,17 +24,17 @@ Proyek ini menggunakan dataset Microsoft News Dataset (MIND), yang didokumentasi
 
 Berdasarkan latar belakang yang telah diuraikan, berikut adalah rumusan masalah utama yang akan diselesaikan dalam proyek ini:
 
-- Bagaimana cara membangun sistem yang dapat merekomendasikan artikel berita yang relevan kepada pengguna berdasarkan konten berita yang pernah mereka baca sebelumnya?
-- Bagaimana cara merekomendasikan artikel berita kepada seorang pengguna berdasarkan pola baca dari pengguna lain yang memiliki selera serupa?
-- Bagaimana mengevaluasi performa dari kedua model rekomendasi tersebut untuk mengetahui seberapa akurat rekomendasi yang diberikan?
+- Pengguna platform berita menghadapi kesulitan dalam menemukan artikel yang sesuai dengan minat pribadi mereka di tengah volume konten yang sangat besar.
+- Platform berita membutuhkan cara yang efektif untuk meningkatkan keterlibatan dan retensi pengguna dengan menyajikan konten yang dipersonalisasi.
+- Bagaimana cara membangun dan membandingkan dua pendekatan sistem rekomendasi yang berbeda (berbasis konten dan berbasis perilaku pengguna) untuk menentukan solusi yang paling efektif?
 
 ### Goals
 
-Tujuan yang ingin dicapai dari proyek ini adalah sebagai berikut:
+Tujuan utama dari proyek ini adalah sebagai berikut:
 
 - Mengembangkan model sistem rekomendasi dengan pendekatan **Content-Based Filtering** yang mampu menyarankan artikel berita berdasarkan kemiripan konten (kategori dan judul).
-- Mengembangkan model sistem rekomendasi dengan pendekatan **Collaborative Filtering** yang mampu menyarankan artikel berita berdasarkan riwayat interaksi pengguna (klik).
-- Menghasilkan daftar Top-N rekomendasi berita yang dipersonalisasi untuk pengguna dari kedua model.
+- Mengembangkan model sistem rekomendasi dengan pendekatan **Collaborative Filtering** yang mampu menyarankan artikel berita berdasarkan riwayat interaksi dan kesamaan selera antar pengguna.
+- Mengevaluasi kedua model secara kuantitatif menggunakan metrik yang relevan (_Precision@10_) untuk menentukan pendekatan mana yang memberikan rekomendasi paling akurat.
 
 ### Solution Statements
 
@@ -45,110 +45,216 @@ Untuk mencapai tujuan tersebut, diajukan dua pendekatan solusi sebagai berikut:
 
 ## Data Understanding
 
-Dataset yang digunakan dalam proyek ini adalah **"MIND-Small: Microsoft News Recommendation"**. MIND adalah dataset berskala besar untuk penelitian rekomendasi berita yang dikumpulkan dari perilaku pengguna anonim di Microsoft News. Versi "small" berisi data dari 50.000 pengguna selama 6 minggu.
+Dataset yang digunakan dalam proyek ini adalah **"MIND-Small: Microsoft News Recommendation"**. MIND adalah dataset berskala besar untuk penelitian rekomendasi berita yang dikumpulkan dari perilaku pengguna anonim di Microsoft News. Versi "small" yang digunakan dalam proyek ini berisi data dari 50.000 pengguna selama 6 minggu.
 
-- **Sumber Dataset:** [MINDsmall on Kaggle](https://www.kaggle.com/datasets/arashnic/mind-small-dataset-for-news-recommendation)
-- **Jumlah Data:**
-  - `news.tsv`: 51.282 artikel berita unik.
-  - `behaviors.tsv`: 156.965 baris data interaksi (klik).
+- **Sumber Dataset:** [MINDsmall on Kaggle](https://www.kaggle.com/datasets/arashnic/mind-news-dataset)
+
+Dataset ini terdiri dari dua file utama: `news.tsv` dan `behaviors.tsv`.
 
 ### Variabel pada Dataset
 
-Dataset ini terdiri dari dua file utama:
+Berikut adalah penjelasan untuk setiap variabel (kolom) dalam dataset:
 
-1.  **`news.tsv`** (Informasi Konten Berita)
+**1. `news.tsv` (Informasi Konten Berita)**
 
-    - `News ID`: ID unik untuk setiap artikel berita.
-    - `Category`: Kategori utama berita (misalnya, _sports_, _finance_, _health_).
-    - `SubCategory`: Sub-kategori yang lebih spesifik.
-    - `Title`: Judul artikel berita.
-    - `Abstract`: Ringkasan konten artikel berita.
-    - `URL`: URL ke artikel asli.
-    - `Title Entities`: Entitas (misalnya, nama orang, organisasi) yang terdeteksi di judul.
-    - `Abstract Entities`: Entitas yang terdeteksi di abstrak.
+- `News_ID`: ID unik untuk setiap artikel berita.
+- `Category`: Kategori utama berita (misalnya, _sports_, _finance_, _health_).
+- `SubCategory`: Sub-kategori yang lebih spesifik.
+- `Title`: Judul artikel berita.
+- `Abstract`: Ringkasan konten artikel berita.
+- `URL`: URL ke artikel asli (tidak digunakan dalam pemodelan).
+- `Title_Entities`: Entitas (misalnya, nama orang, organisasi) yang terdeteksi di judul (tidak digunakan dalam pemodelan).
+- `Abstract_Entities`: Entitas yang terdeteksi di abstrak (tidak digunakan dalam pemodelan).
 
-2.  **`behaviors.tsv`** (Informasi Perilaku Pengguna)
-    - `Impression ID`: ID unik untuk setiap sesi impresi.
-    - `User ID`: ID unik untuk setiap pengguna.
-    - `Time`: Waktu saat impresi terjadi.
-    - `History`: Daftar `News ID` yang pernah diklik pengguna di masa lalu.
-    - `Impressions`: Daftar berita yang ditampilkan kepada pengguna dalam sesi tersebut, beserta label klik (1 untuk diklik, 0 untuk tidak).
+**2. `behaviors.tsv` (Informasi Perilaku Pengguna)**
+
+- `Impression_ID`: ID unik untuk setiap sesi impresi.
+- `User_ID`: ID unik untuk setiap pengguna.
+- `Time`: Waktu saat impresi terjadi.
+- `History`: Daftar `News_ID` yang pernah diklik pengguna di masa lalu, dipisahkan oleh spasi.
+- `Impressions`: Daftar berita yang ditampilkan kepada pengguna dalam sesi tersebut, beserta label klik (`-1` untuk diklik, `-0` untuk tidak).
+
+### Inspeksi Awal Data
+
+Berdasarkan analisis awal menggunakan fungsi `.info()` pada notebook, didapatkan informasi berikut:
+
+- **Struktur Data:**
+
+  - `df_news`: Terdiri dari **51,282 baris** (artikel) dan 8 kolom.
+  - `df_behaviors`: Terdiri dari **156,965 baris** (sesi interaksi) dan 5 kolom.
+
+- **Kualitas Data (Nilai Hilang):**
+  - Pada `df_news`, beberapa kolom seperti `Abstract`, `Title_Entities`, dan `Abstract_Entities` memiliki nilai yang hilang. Namun, kolom kunci untuk pemodelan kita (`Title` dan `Category`) tidak memiliki nilai hilang.
+  - Pada `df_behaviors`, kolom `History` memiliki nilai yang hilang. Ini adalah insight penting yang kemungkinan besar mengindikasikan adanya **pengguna baru** yang belum memiliki riwayat baca, sebuah manifestasi dari masalah _cold start_.
 
 ### Exploratory Data Analysis (EDA)
 
-Tahap EDA dilakukan untuk memahami distribusi dan karakteristik data. Beberapa hasil visualisasi utama adalah:
+EDA dilakukan untuk memahami karakteristik dan distribusi data lebih dalam.
 
-- **Distribusi Kategori Berita:** Visualisasi menunjukkan bahwa kategori **'news'** dan **'sports'** adalah yang paling dominan dalam dataset.
-- **Jumlah Interaksi per Pengguna:** Distribusi jumlah berita yang dibaca per pengguna menunjukkan bahwa sebagian besar pengguna membaca sejumlah kecil artikel, sementara beberapa pengguna sangat aktif (distribusi _long-tail_), yang merupakan pola umum dalam data perilaku.
+**1. Distribusi Kategori Berita**
+
+![Distribusi Kategori Berita](assets/distribusi_kategori.png)
+_<p align="center">Gambar 1: Distribusi Jumlah Artikel per Kategori</p>_
+
+- **Insight:** Grafik di atas menunjukkan bahwa distribusi kategori berita **sangat tidak seimbang (_imbalanced_)**. Kategori **'news'** dan **'sports'** sangat mendominasi dataset, sementara kategori lain memiliki jumlah artikel yang jauh lebih sedikit. Fenomena ini dikenal sebagai _long-tail distribution_ dan dapat menyebabkan bias pada model, di mana model mungkin cenderung lebih sering merekomendasikan kategori yang dominan.
+
+**2. Distribusi Panjang Riwayat Baca Pengguna**
+
+![Distribusi Panjang Riwayat Baca](assets/distribusi_panjang_riwayat.png)
+_<p align="center">Gambar 2: Distribusi Panjang Riwayat Interaksi Pengguna</p>_
+
+- **Insight:** Histogram ini juga menunjukkan distribusi _long-tail_. Sebagian besar pengguna adalah **pengguna kasual** dengan riwayat baca yang sangat pendek (mayoritas < 20 artikel). Hanya ada sejumlah kecil **power users** dengan riwayat yang sangat panjang. Hal ini mengonfirmasi adanya tantangan _data sparsity_ dan _cold start_ untuk mayoritas pengguna, yang akan lebih sulit untuk diberikan rekomendasi akurat oleh model _Collaborative Filtering_.
+
+**3. Word Cloud dari Judul Berita**
+
+![Word Cloud Judul](assets/word_cloud.jpg)
+_<p align="center">Gambar 3: Word Cloud dari Judul Berita</p>_
+
+- **Insight:** _Word cloud_ ini memberikan gambaran kualitatif tentang topik yang paling sering muncul. Kata-kata seperti **`Trump`**, **`US`**, **`Health`**, **`Foods`**, dan **`game`** sangat menonjol, yang mengonfirmasi fokus konten pada berita politik, kesehatan, dan olahraga, selaras dengan hasil distribusi kategori. Kata umum seperti **`says`** juga dominan, yang merupakan _stop word_ kontekstual dalam berita.
 
 ## Data Preparation
 
-Tahapan persiapan data dilakukan untuk memastikan data siap digunakan untuk pemodelan. Berikut adalah langkah-langkah yang dilakukan secara berurutan:
+Tahapan ini krusial untuk mentransformasi data mentah menjadi format yang siap untuk pemodelan.
 
-1.  **Loading Data:** Memuat file `news.tsv` dan `behaviors.tsv` ke dalam DataFrame `pandas`. Proses ini dibungkus dalam blok `try-except` untuk menangani `FileNotFoundError`.
-    - _Alasan:_ Ini adalah langkah awal dan mendasar untuk dapat mengakses dan memanipulasi data.
-2.  **Menggabungkan Data Berita dan Perilaku:** Karena data interaksi (`behaviors.tsv`) hanya berisi `News ID`, kita perlu menggabungkannya dengan `news.tsv` untuk mendapatkan detail konten seperti judul dan kategori. Data klik diekstrak dari kolom `Impressions`.
-    - _Alasan:_ Menggabungkan data memungkinkan kita untuk menganalisis konten berita yang diklik oleh pengguna, yang merupakan dasar bagi kedua model rekomendasi.
-3.  **Membersihkan Data:** Menghapus baris dengan nilai yang hilang (`NaN`) pada kolom-kolom penting seperti `Category` dan `Title`.
-    - _Alasan:_ Nilai yang hilang dapat menyebabkan error selama proses pemodelan dan menghasilkan output yang tidak akurat.
-4.  **Feature Engineering:** Membuat fitur baru `content` dengan menggabungkan `Title` dan `Category`.
-    - _Alasan:_ Menggabungkan beberapa fitur teks menjadi satu dapat memberikan representasi konten yang lebih kaya untuk model Content-Based Filtering.
+### 1. Pembersihan Data dari Nilai Hilang
+
+- **Metode**: Menggunakan fungsi `pandas.dropna()` pada `df_news` untuk menghapus baris di mana kolom `Title` atau `Category` kosong.
+- **Alasan**: Langkah ini menjamin integritas fitur yang akan digunakan. Model _Content-Based_ kita sangat bergantung pada judul dan kategori, sehingga baris tanpa informasi ini tidak akan berguna dan harus dihilangkan untuk mencegah error dan hasil yang tidak akurat.
+
+### 2. Pengambilan Sampel (_Sampling_) Data Perilaku
+
+- **Metode**: Menggunakan `pandas.sample(n=50000, random_state=42)` pada `df_behaviors`.
+- **Alasan**: Dataset `behaviors.tsv` asli cukup besar. Sampling dilakukan untuk mempercepat proses komputasi pada tahap pelatihan dan evaluasi, terutama pada mesin dengan sumber daya terbatas. Penggunaan `random_state` memastikan bahwa sampel yang diambil selalu konsisten, sehingga hasil proyek dapat direproduksi.
+
+### 3. Rekayasa Fitur dari Riwayat Interaksi
+
+- **Metode**: Melakukan iterasi pada kolom `History` dari `df_behaviors_sample`, memisahkan string `News_ID` berdasarkan spasi, dan menyusunnya kembali menjadi DataFrame baru (`df_interaction`) dengan format _long_ (satu baris untuk setiap pasangan `User_ID` dan `News_ID`).
+- **Alasan**: Format asli kolom `History` tidak bisa langsung digunakan oleh model. Transformasi ini mengubah data dari format _wide_ ke format _long_, yang merupakan struktur standar untuk data interaksi dalam sistem rekomendasi, terutama untuk model _Collaborative Filtering_.
+
+### 4. Penggabungan Data
+
+- **Metode**: Menggunakan `pd.merge()` untuk menggabungkan `df_interaction` dengan `df_news_cleaned` berdasarkan kolom kunci `News_ID`.
+- **Alasan**: Langkah ini sangat penting untuk memperkaya data interaksi dengan metadata kontennya. Hasilnya, `df_full_interaction`, adalah dataset terpadu yang berisi informasi pengguna, berita yang mereka baca, beserta kategori dan judul berita tersebut, yang siap digunakan oleh kedua model.
 
 ## Modeling and Result
 
-Dua model dikembangkan sesuai dengan pendekatan solusi yang telah diuraikan.
-
 ### Model 1: Content-Based Filtering
 
-Model ini merekomendasikan berita berdasarkan kemiripan konten.
+- **Definisi dan Cara Kerja**:
+  _Content-Based Filtering_ adalah pendekatan yang merekomendasikan item berdasarkan kemiripan atribut atau "konten" dari item itu sendiri. Model ini bekerja dengan cara:
 
-1.  **Proses:**
-    - Vektorisasi fitur `content` (gabungan judul dan kategori) menggunakan `TfidfVectorizer`. TF-IDF mengubah teks menjadi representasi numerik yang membobotkan kata-kata berdasarkan kepentingannya.
-    - Menghitung matriks kemiripan kosinus (`cosine similarity`) antara semua berita dalam dataset. Kemiripan kosinus mengukur sudut antara dua vektor, di mana nilai yang mendekati 1 menandakan kemiripan yang tinggi.
-2.  **Hasil (Top-N Recommendation):**
-    - Model menerima input berupa judul berita dan mengembalikan 10 berita lain yang paling mirip. Contohnya, untuk berita tentang "Trump", model akan merekomendasikan berita lain seputar politik AS.
+  1.  **Representasi Fitur**: Mengubah fitur teks (dalam kasus ini, gabungan judul dan kategori berita) menjadi representasi vektor numerik menggunakan **TF-IDF** (_Term Frequency-Inverse Document Frequency_).
+  2.  **Perhitungan Kemiripan**: Menghitung kemiripan antara vektor dari satu berita dengan semua berita lainnya menggunakan metrik **Cosine Similarity**. Skor kemiripan yang tinggi (mendekati 1) menunjukkan konten yang sangat mirip.
 
-### Model 2: Collaborative Filtering
+- **Konteks dalam Proyek**:
+  Model ini bertujuan menjawab pertanyaan: "Jika seorang pengguna menyukai berita X, berita lain apa yang kontennya paling mirip dengan X?"
 
-Model ini merekomendasikan berita berdasarkan pola perilaku pengguna.
+- **Implementasi (Parameter & Kode)**:
+  Model diimplementasikan menggunakan `TfidfVectorizer` dari Scikit-learn tanpa parameter khusus (menggunakan default). Fungsi `get_content_based_recommendations` dibuat untuk membungkus logika rekomendasi secara efisien.
 
-1.  **Proses:**
-    - Data interaksi pengguna (hanya berita yang diklik) disiapkan dalam format yang sesuai untuk library `surprise`. Setiap baris terdiri dari `(userID, itemID, rating)`. Karena ini adalah data implisit (klik), kita menetapkan 'rating' seragam bernilai `1`.
-    - Model dilatih menggunakan algoritma **SVD (Singular Value Decomposition)**. SVD adalah teknik faktorisasi matriks yang mengurai matriks interaksi user-item menjadi matriks faktor laten pengguna dan item.
-2.  **Hasil (Top-N Recommendation):**
-    - Model menerima input berupa `User ID` dan menghasilkan 10 rekomendasi berita teratas yang diprediksi akan disukai pengguna tersebut, namun belum pernah dibaca sebelumnya.
+  ```python
+  def get_content_based_recommendations(title, tfidf_matrix, df, indices_map):
+      # Logika untuk mencari indeks, menghitung cosine similarity, dan mengurutkan hasil
+      ...
+      return df[['Title', 'Category']].iloc[news_indices]
+  ```
 
-### Kelebihan dan Kekurangan Pendekatan
+- **Hasil Rekomendasi (Contoh)**:
+  Untuk input berita _"50 Foods You Should Never Eat, According to Health Experts"_, model memberikan rekomendasi berikut:
 
-- **Content-Based Filtering:**
-  - **Kelebihan:** Mampu merekomendasikan item yang sangat spesifik dan baru (tidak memerlukan rating dari pengguna lain). Rekomendasinya juga transparan dan mudah dijelaskan.
-  - **Kekurangan:** Cenderung menghasilkan rekomendasi yang terlalu mirip (_over-specialization_) dan kurang beragam. Kesulitan menemukan minat baru bagi pengguna (_low serendipity_).
-- **Collaborative Filtering:**
-  - **Kelebihan:** Mampu menghasilkan rekomendasi yang mengejutkan dan beragam (_serendipity_) karena tidak bergantung pada konten.
-  - **Kekurangan:** Mengalami masalah _cold start_, yaitu kesulitan memberikan rekomendasi untuk pengguna baru atau item baru yang belum memiliki interaksi. Membutuhkan data interaksi yang besar.
+| Title                                       | Category     |
+| :------------------------------------------ | :----------- |
+| How Much Protein You Should Actually Eat... | health       |
+| 50 famous foods you should eat in your...   | foodanddrink |
+| 50 Awful Foods That Should Never Be in...   | health       |
+| ... (dan seterusnya)                        | ...          |
+
+_<p align="center">Tabel 1: Contoh Top-10 Rekomendasi dari Model Content-Based</p>_
+
+- **Kelebihan dan Kekurangan**:
+  - **Kelebihan**: Tidak memerlukan data dari pengguna lain, sehingga tidak mengalami masalah _user cold start_. Rekomendasinya juga transparan dan mudah dijelaskan (misalnya, "kami merekomendasikan ini karena topiknya sama").
+  - **Kekurangan**: Cenderung menghasilkan rekomendasi yang terlalu mirip (_over-specialization_) dan kurang beragam. Model ini kesulitan menemukan topik baru yang mungkin disukai pengguna (_low serendipity_).
+
+### Model 2: Collaborative Filtering (SVD)
+
+- **Definisi dan Cara Kerja**:
+  _Collaborative Filtering_ adalah pendekatan yang merekomendasikan item berdasarkan pola perilaku dari sekelompok besar pengguna. Algoritma **SVD** (_Singular Value Decomposition_) yang digunakan adalah teknik faktorisasi matriks. Ia bekerja dengan:
+
+  1.  **Faktorisasi Matriks**: Menguraikan matriks interaksi pengguna-berita menjadi dua matriks yang lebih kecil, yaitu matriks **faktor laten pengguna** dan matriks **faktor laten item**.
+  2.  **Prediksi**: Faktor laten ini menangkap preferensi tersembunyi pengguna dan karakteristik item. Skor preferensi untuk item yang belum dilihat diprediksi dengan menghitung _dot product_ antara vektor laten pengguna dan vektor laten item.
+
+- **Konteks dalam Proyek**:
+  Model ini bertujuan menjawab pertanyaan: "Berita apa yang disukai oleh pengguna lain yang seleranya mirip dengan Anda?"
+
+- **Implementasi (Parameter & Kode)**:
+  Model diimplementasikan menggunakan `SVD` dari _library_ `surprise`. Parameter utama yang digunakan adalah:
+
+  - `n_factors=50`: Jumlah faktor laten yang digunakan untuk merepresentasikan pengguna dan item.
+  - `n_epochs=20`: Jumlah iterasi pelatihan pada seluruh dataset.
+  - `random_state=42`: Untuk memastikan hasil yang dapat direproduksi.
+
+  ```python
+  def get_collaborative_filtering_recommendations(user_id, model, ...):
+      # Logika untuk filter berita, prediksi skor, dan pengurutan
+      ...
+      return df_n[df_n['News_ID'].isin(top_n_news_ids)]
+  ```
+
+- **Hasil Rekomendasi (Contoh)**:
+  Untuk input pengguna `U46778`, model memberikan rekomendasi berikut:
+
+| Title                                    | Category  |
+| :--------------------------------------- | :-------- |
+| The Brands Queen Elizabeth, Prince...    | lifestyle |
+| 50 Worst Habits For Belly Fat            | health    |
+| The Cost of Trump's Aid Freeze in the... | news      |
+| ... (dan seterusnya)                     | ...       |
+
+_<p align="center">Tabel 2: Contoh Top-10 Rekomendasi dari Model Collaborative Filtering</p>_
+
+- **Kelebihan dan Kekurangan**:
+  - **Kelebihan**: Mampu menghasilkan rekomendasi yang beragam dan mengejutkan (_serendipitous_) karena tidak bergantung pada konten.
+  - **Kekurangan**: Mengalami masalah _cold start_ (kesulitan memberi rekomendasi untuk pengguna baru atau item baru yang belum memiliki interaksi). Membutuhkan data interaksi yang besar untuk dapat bekerja dengan baik.
 
 ## Evaluation
 
-Untuk mengevaluasi performa model, terutama pada skenario Top-N recommendation, metrik **Precision@k** digunakan.
+### Metrik Evaluasi: Precision@k
 
-### Penjelasan Metrik: Precision@k
+- **Definisi**:
+  _Precision@k_ adalah metrik evaluasi yang mengukur seberapa relevan rekomendasi yang diberikan dalam daftar Top-k. Metrik ini menjawab pertanyaan: "Dari _k_ item teratas yang direkomendasikan, berapa proporsi yang benar-benar relevan bagi pengguna?"
 
-Precision@k adalah metrik yang mengukur seberapa relevan rekomendasi yang diberikan. Metrik ini menjawab pertanyaan: "Dari _k_ item yang direkomendasikan, berapa persen yang benar-benar relevan bagi pengguna?"
+- **Formula/Rumus**:
+  $$ \text{Precision@k} = \frac{\text{|{Item yang Direkomendasikan}|} \cap \text{|{Item yang Relevan}|}}{k} $$
 
-**Formula:**
-$$ Precision@k = \frac{\text{|{Item yang Direkomendasikan}|} \cap \text{|{Item yang Relevan}|}}{k} $$
-Di mana:
+- **Cara Kerja**:
 
-- `{Item yang Direkomendasikan}` adalah himpunan _k_ item yang dihasilkan oleh model.
-- `{Item yang Relevan}` adalah himpunan item yang benar-benar disukai/diklik oleh pengguna di masa depan (disimulasikan menggunakan _test set_).
-- `k` adalah jumlah rekomendasi yang diberikan (misalnya, 10).
+  1.  Data interaksi pengguna dibagi menjadi _train set_ (untuk melatih model) dan _test set_ (sebagai _ground truth_ atau item yang dianggap relevan).
+  2.  Model menghasilkan _k_ rekomendasi teratas berdasarkan `train set`.
+  3.  Jumlah rekomendasi yang cocok dengan item di `test set` dihitung.
+  4.  Precision@k adalah jumlah item yang cocok tersebut dibagi dengan _k_.
+  5.  Nilai ini dirata-ratakan untuk semua pengguna dalam `test set` untuk mendapatkan skor presisi model secara keseluruhan.
 
-**Cara Kerja:**
-Untuk menguji model, riwayat klik setiap pengguna dibagi menjadi dua bagian: _train set_ (untuk melatih model) dan _test set_ (sebagai _ground truth_ atau item yang dianggap relevan). Model kemudian menghasilkan _k_ rekomendasi berdasarkan _train set_. Precision@k dihitung dengan membagi jumlah rekomendasi yang cocok dengan item di _test set_ dengan _k_. Nilai ini kemudian dirata-ratakan untuk semua pengguna.
+- **Konteks dalam Proyek**:
+  Metrik ini sangat cocok untuk tujuan bisnis proyek, yaitu menyajikan daftar rekomendasi yang berguna. Kita tidak perlu tahu apakah pengguna akan menyukai _semua_ berita, tetapi kita ingin memastikan bahwa 10 berita yang kita tampilkan memiliki kemungkinan besar untuk disukai. _Precision@10_ mengukur efektivitas daftar pendek ini secara langsung.
 
 ### Hasil Evaluasi
 
-Evaluasi dilakukan pada model Collaborative Filtering karena lebih mudah diukur menggunakan data riwayat interaksi.
+Berikut adalah hasil evaluasi kuantitatif dari kedua model.
 
-- **Metrik:** Precision@10
-- **Hasil:** Model SVD mencapai skor **Precision@10 sekitar 0.082**. Ini berarti dari 10 artikel yang direkomendasikan kepada seorang pengguna, rata-rata hampir 1 artikel (tepatnya 0.82) cocok dengan apa yang akan ia baca selanjutnya. Meskipun angka ini terlihat kecil, dalam domain rekomendasi dengan jutaan item, skor ini sudah menunjukkan bahwa model memberikan performa yang jauh lebih baik daripada tebakan acak.
+| Model                             | Precision@10 |
+| :-------------------------------- | :----------- |
+| Content-Based Filtering           | 0.0032       |
+| **Collaborative Filtering (SVD)** | **0.5312**   |
+
+_<p align="center">Tabel 3: Perbandingan Hasil Evaluasi Model</p>_
+
+### Kesimpulan Hasil Evaluasi
+
+Berdasarkan tabel perbandingan di atas, terlihat bahwa **Collaborative Filtering (SVD)** memiliki nilai `Precision@10` yang jauh lebih tinggi (sekitar **0.53**) dibandingkan dengan **Content-Based Filtering** (sekitar **0.003**).
+
+Hal ini dapat disimpulkan sebagai berikut:
+
+- **Collaborative Filtering** lebih efektif dalam menangkap pola dan preferensi laten pengguna dari data interaksi historis. Model ini mampu memberikan rekomendasi yang lebih akurat karena belajar dari perilaku kolektif banyak pengguna.
+- **Content-Based Filtering**, meskipun logis, memiliki performa yang sangat rendah dalam kasus ini. Hal ini kemungkinan disebabkan oleh keterbatasan fitur konten yang digunakan (hanya judul dan kategori) dan sifatnya yang cenderung merekomendasikan item yang sangat mirip, sehingga gagal menangkap keragaman selera pengguna.
+
+Dengan demikian, untuk implementasi sistem rekomendasi berita pada dataset ini, pendekatan **Collaborative Filtering menggunakan SVD adalah solusi yang jelas lebih unggul dan direkomendasikan**.
